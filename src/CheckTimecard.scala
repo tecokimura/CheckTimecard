@@ -10,7 +10,7 @@ object CheckTimeCard {
     args.foreach(arg => println("%s: %s".format("arg2",arg)))
 
     args.filter(n => n.indexOf("a")==0).foreach(arg => println("%s: %s".format("arg3",arg)))
-    println("--------------");
+    println("===========");
 
     for(str <- args) {
       println("args: "+str)

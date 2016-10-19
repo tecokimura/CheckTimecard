@@ -1,3 +1,5 @@
+import scala.io._
+
 /**
  * Created by kimura on 2016/10/13.
  * とりあえず汚くていいからScalaとしておかしくても書いてみる
@@ -7,18 +9,31 @@ object CheckTimeCard {
   def main(args: Array[String]) {
 
     // 実行時の引数を取得する
-    args.foreach(arg => println("%s: %s".format("arg2",arg)))
+    args.foreach(arg => println("%s: %s".format("arg2", arg)))
 
-    args.filter(n => n.indexOf("a")==0).foreach(arg => println("%s: %s".format("arg3",arg)))
+    args.filter(n => n.indexOf("a") == 0).foreach(arg => println("%s: %s".format("arg3", arg)))
     println("===========");
 
-    for(str <- args) {
-      println("args: "+str)
-    }
+    for (str <- args) println("args: " + str)
 
     // とりあえず出力のサンプル
     val str = "Start line is here"
     println(str)
+
+    // ファイルを読み込む
+    val FNAME = "timecards.csv"
+
+    val source = Source.fromFile(FNAME, "UTF-8")
+    try {
+      // 1行ごとの文字列を返すIteratorを取得して表示
+      source.getLines().foreach { line: String =>
+        println(line);
+
+      }
+    } finally {
+      // close
+      source.close();
+    }
 
 
 
@@ -37,12 +52,11 @@ object CheckTimeCard {
     //StringBuilder
 
 
-
   }
 
 
   def output(aryStr: Array[String]): Unit = {
-    for(str <- aryStr) {
+    for (str <- aryStr) {
       println(str)
     }
   }
@@ -54,8 +68,7 @@ object CheckTimeCard {
  * @author tecokimura
  */
 object Settings {
+
   val Num = 10
-  val AIUEO:String = "Hello"
-
-
+  val AIUEO: String = "Hello"
 }

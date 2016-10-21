@@ -22,14 +22,33 @@ object CheckTimeCard {
 
     // ファイルを読み込む
     val FNAME = "timecards.csv"
-
     val source = Source.fromFile(FNAME, "UTF-8")
     try {
       // 1行ごとの文字列を返すIteratorを取得して表示
       source.getLines().foreach { line: String =>
-        println(line);
 
+        // そのまま表示
+        println(line)
+
+        //
+        line.replaceAll("\"*", "").split(",").foreach(println(_))
+
+        // CSVを分割してから””を消して表示
+        val lineSplit = line.split(",")
+        lineSplit.foreach { value:String =>
+          println(value.replaceAll("\"*", ""))
+        }
+
+        // 配列の変数に入れる方法を調べる
+
+        //
       }
+
+      source.getLines().foreach { line: String =>
+          {
+            line.split(",")
+          }
+        }
     } finally {
       // close
       source.close();
